@@ -16,7 +16,7 @@ namespace CalculatorLibr
 
         public void BlaBla()
         {
-            Console.WriteLine("Best Student Vasu SE");
+            Console.WriteLine("Best Student Vasu SE bla Bla bla");
         }
     }
 }
