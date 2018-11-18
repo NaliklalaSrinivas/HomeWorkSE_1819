@@ -8,8 +8,7 @@ namespace SE_DotnetCore1819
     {
         int m_Result = 0;
 
-        public int Save { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int load { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+       
 
         public object GetResult()
         {
@@ -35,5 +34,7 @@ namespace SE_DotnetCore1819
             this.m_Result = 1;
             }
         }
+        public int Save { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int load { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

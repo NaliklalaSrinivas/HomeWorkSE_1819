@@ -11,9 +11,6 @@ namespace SE_DotnetCore1819
         int count = 0;
         int SumOfSquares = 0;
 
-        public int Save { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int load { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
         public object GetResult()
         {
             return this.m_Result;
@@ -100,6 +97,8 @@ namespace SE_DotnetCore1819
             }
             else { return (double)nums[0]; }
         }
+        public int Save { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int load { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     }
 }
