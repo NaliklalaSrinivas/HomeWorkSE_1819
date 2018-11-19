@@ -1,19 +1,29 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace SE_DotnetCore1819
 {
-    class LinearRegression:ILinearRegressionAlg
+    class LinearRegression : ILinearRegressionAlg
     {
         int m_Result = 0;
         int sum = 0;
         int count = 0;
         int SumOfSquares = 0;
+        double resultAvrg = 0;
+        double resultmedian = 0;
+        double Mediantotal = 0;
+        double Averagetotal = 0;
+        double Variencestotal = 0;
+
+        Result result_ = new Result();
 
         public object GetResult()
         {
-            return this.m_Result;
+            String finalresult = "Average value :" +result_.AvgResult +"Median Value :" +result_.MedianResult +"Variences Value :" +result_.VariencesResult;
+            return finalresult;
         }
 
         public void Train(int[] data)
@@ -42,8 +52,10 @@ namespace SE_DotnetCore1819
         }*/
         public void Median(int[] nums)
         {
-            var medianvalue = getAverage(nums)/2;
+            var medianvalue = getAverage(nums) / 2;
             Console.WriteLine("Output Mean : " + medianvalue);
+            Mediantotal = +medianvalue;
+            result_.MedianResult = Mediantotal;
         }
         public double variance(int[] nums)
         {
@@ -62,10 +74,12 @@ namespace SE_DotnetCore1819
                 {
                     sumOfSquares += Math.Pow((num - avg), 2.0);
                 }
-                Console.WriteLine("Output Variance : " + sumOfSquares / (double)(nums.Length - 1));
+                Variencestotal = sumOfSquares / (double)(nums.Length - 1);
+                Console.WriteLine("Output Variance : " + Variencestotal);
+                result_.VariencesResult = Variencestotal;
                 // Finally divide it by n - 1 (for standard deviation variance)
                 // Or use length without subtracting one ( for population standard deviation variance)
-                return sumOfSquares / (double)(nums.Length - 1);
+                return result_.VariencesResult;
             }
             else { return 0.0; }
         }
@@ -89,16 +103,37 @@ namespace SE_DotnetCore1819
                 {
                     sum += num;
                 }
-
+                Averagetotal = sum / (double)nums.Length;
                 // Divide by the number of values
-                Console.WriteLine("Output Average : " + sum / (double)nums.Length);
-                return sum / (double)nums.Length;
-                
+                Console.WriteLine("Output Average : " + Averagetotal);
+                result_.AvgResult = Averagetotal;
+                return result_.AvgResult;
+
             }
             else { return (double)nums[0]; }
         }
-        public int Save { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int load { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
+
+        public void Save()
+        {
+            String str = "{\"Average\": " + result_.AvgResult  + ",\"Median\": " + result_.MedianResult + ",\"Variences\": " + result_.VariencesResult + "}";
+
+            File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "VasuCalculationsSaved.json"), str);
+           
+        }
+
+           public  void Load()
+        {
+            var builder = new ConfigurationBuilder()
+
+           .AddJsonFile("VasuCalculationsSaved.json", optional: false, reloadOnChange: true);
+
+            IConfigurationRoot configuration = builder.Build();
+
+            result_.AvgResult = double.Parse(configuration["Average"]);
+            result_.MedianResult = double.Parse(configuration["Median"]);
+            result_.VariencesResult = double.Parse(configuration["Variences"]);
+
+        }
     }
 }

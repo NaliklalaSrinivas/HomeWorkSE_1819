@@ -47,7 +47,7 @@ namespace SE_DotnetCore1819
 
             Console.WriteLine("Hello Interfaces!");
 
-            int[] data = new int[] { 1, 3, 5, 7, 3 };
+            int[] data = new int[] { 1, 3, 5, 7, 300};
 
             ILinearRegressionAlg alg = new ConcreteALgorithm();
 
@@ -61,9 +61,15 @@ namespace SE_DotnetCore1819
             alg.Train(data);
 
             var result1 = alg.GetResult();
+            algo.Load();
+            Console.WriteLine("previous result:" + algo.GetResult());
             algo.getAverage(data);
             algo.Median(data);
             algo.variance(data);
+            
+            Console.WriteLine("current result:" + algo.GetResult());
+            algo.Save();
+           
 
             Console.ReadKey();
 

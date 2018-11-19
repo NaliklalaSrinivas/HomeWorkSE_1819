@@ -10,8 +10,8 @@ namespace SE_DotnetCore1819
 
         void Train(int[] data);
 
-        int Save { get; set; }
-        int load { get; set; }
+        void Save();
+        void Load();
     }
 }
         

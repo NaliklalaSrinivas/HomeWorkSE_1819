@@ -7,12 +7,23 @@ namespace SE_DotnetCore1819
     class ConcreteALgorithm:ILinearRegressionAlg
     {
         int m_Result = 0;
+        Result res = new Result();
 
-       
+
 
         public object GetResult()
         {
             return this.m_Result;
+        }
+
+        public double load()
+        {
+            throw new NotImplementedException();
+        }
+
+        public double Save()
+        {
+            throw new NotImplementedException();
         }
 
         public void Train(int[] data)
@@ -34,7 +45,15 @@ namespace SE_DotnetCore1819
             this.m_Result = 1;
             }
         }
-        public int Save { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int load { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        void ILinearRegressionAlg.Load()
+        {
+            throw new NotImplementedException();
+        }
+
+        void ILinearRegressionAlg.Save()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
