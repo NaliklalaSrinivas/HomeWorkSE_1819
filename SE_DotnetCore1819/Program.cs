@@ -10,7 +10,8 @@ namespace SE_DotnetCore1819
 {
     public class Program
     {
-        static void Main(string[] args)
+        /*static void Main(string[] args)*/
+        public static void OriginalMain()
         {
             Console.WriteLine("Hello World!");
 
