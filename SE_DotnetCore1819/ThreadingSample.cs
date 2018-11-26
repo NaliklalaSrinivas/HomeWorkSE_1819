@@ -15,7 +15,7 @@ namespace SE_DotnetCore1819
         public static void Main(string[] args)
         {
 
-            Console.WriteLine("Press any Key to start.");
+            Console.WriteLine("Press any Key from keyboard to start.");
             Console.ReadKey();
             //Console.ReadLine();
 
