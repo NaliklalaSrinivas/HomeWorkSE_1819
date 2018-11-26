@@ -14,6 +14,7 @@ namespace CalculatorTestingProject
             BetterCalculator cal = new BetterCalculator();
             var ActuallData = cal.Add(10, 20);
             var PreditedData = 30;
+            Console.WriteLine("AdditionTestCase for the project");
             Assert.AreEqual(ActuallData, PreditedData);
         }
 
