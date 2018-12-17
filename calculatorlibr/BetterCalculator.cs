@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CalculatorLibr
+namespace CalculatorLibr 
 {
     public class BetterCalculator:Calculation
     {
