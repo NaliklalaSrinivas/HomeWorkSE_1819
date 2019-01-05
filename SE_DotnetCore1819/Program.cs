@@ -7,7 +7,7 @@ namespace SE_DotnetCore1819
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World!!");
 
             BetterCalculator cal = new BetterCalculator();
             var add = cal.Add(10, 20);
